@@ -1,24 +1,22 @@
 pipeline {
   agent any
   stages {
-
-    stage("build") {
+    stage("Check Version of Python"){
+      step {
+        sh 'python3 --version'
+      }
+    }
+    stage("Check if Python Script Exists") {
       steps {
-        echo "Building the application..."
+        fileExists "step1.py" ? "File found proceeding with the build" : "File NOT Found"
       }
     }
 
-   stage("test") {
+   stage("Run the Python Script") {
       steps {
-        echo "Testing the application..."
+        sh 'python3 step1.py'
       }
     }
-
-  stage("deploy") {
-      steps {
-        echo "Deploying the application..."
-      }
-    }
-
+    
   }
 }
