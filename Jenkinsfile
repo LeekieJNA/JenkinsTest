@@ -16,7 +16,7 @@ pipeline {
           } else {
             echo "File DOES NOT EXIST!"
             def userInput = input(
-              id: 'userInput', 
+              // id: 'userInput', 
               // message: 'The file step1.py does not exist. Do you want to continue?', 
               input message: 'The file step1.py does not exist. Do you want to continue?', ok: 'Yes'
               // parameters: [choice(name: 'Continue', choices: ['Yes', 'No'], description: 'Continue without the file?')]
