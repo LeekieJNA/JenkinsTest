@@ -16,8 +16,10 @@ pipeline {
           } else {
             echo "File DOES NOT EXIST!"
             def userInput = input(
-              id: 'userInput', message: 'The file step1.py does not exist. Do you want to continue?', 
-              parameters: [choice(name: 'Continue', choices: ['Yes', 'No'], description: 'Continue without the file?')]
+              id: 'userInput', 
+              // message: 'The file step1.py does not exist. Do you want to continue?', 
+              input message: 'The file step1.py does not exist. Do you want to continue?', ok: 'Yes'
+              // parameters: [choice(name: 'Continue', choices: ['Yes', 'No'], description: 'Continue without the file?')]
             )
             if (userInput == 'No') {
               error("Pipeline stopped by user.")
