@@ -3,11 +3,13 @@ pipeline {
   stages {
     stage("Check Version of Python") {
       steps {
+        echo "Checking for Python Version"
         sh 'python3 --version'
       }
     }
     stage("Check if Python Script Exists") {
       steps {
+        echo "Locating Python Script"
         script {
           if (fileExists('step1.py')) {
             echo "File exists"
@@ -26,6 +28,7 @@ pipeline {
     }
     stage("Run the Python Script") {
       steps {
+        echo "Running the Script"
         sh 'python3 step1.py'
       }
     }
