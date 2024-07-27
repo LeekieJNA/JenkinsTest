@@ -8,7 +8,11 @@ pipeline {
     }
     stage("Check if Python Script Exists") {
       steps {
-        fileExists "step1.py" ? "File found proceeding with the build" : "File NOT Found"
+        if ( fileExists 'step1.py' ) {
+          echo "File exists"
+        } else {
+          echo "File DOES NOT EXIST!"
+        }
       }
     }
    stage("Run the Python Script") {
