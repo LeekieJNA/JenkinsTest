@@ -7,8 +7,8 @@ pipeline {
       }
     }
     stage("Check if Python Script Exists") {
-      steps {
-        if fileExists('step1.py') {
+      script {
+        if (fileExists('step1.py')) {
           echo "File exists"
         } else {
           echo "File DOES NOT EXIST!"
